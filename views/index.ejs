@@ -1,0 +1,86 @@
+<%-include("include/header") %>
+  <!-- Page Content --><br><br>
+  <div class="container">
+    <%-messages()%>
+    
+    <!-- Heading Row -->
+    <div class="row align-items-center my-5">
+      <div class="col-lg-7">
+        <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-3 text-center font-weight-normal">Find A Job</h1>
+            <form method="get" action="">
+              <div class="form-group">
+                <label for="namecategory"></label>
+                <select class="form-control" name="namecategory" id="namecategory">
+                  <option value="">Please Select</option>
+                  <option value="Business">Business</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Retail">Retail</option>
+                </select>
+                <div class="text-center" id="find">
+                  <button type="submit" class="btn btn-success" id="findbutton" onclick="myFunction()">Find</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-lg-8 -->
+      <div class="col-lg-5">
+          <h1 class="font-weight-bold"><%=result[0].company%></h1>
+          <h6 class="font-weight-bold"><small>Category:<%=result[0].category%></small></h6>
+          <p class="comment more"><%=result[0].description%></p>
+          <a class="btn btn-primary" href="#">Call to Action!</a>
+      </div>
+      <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Call to Action Well -->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+      <div class="card-body">
+        <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
+      </div>
+    </div>
+    <!-- Content Row -->
+    <div class="row">
+    <%result.forEach(function(Data){%>
+      <%if(Data.category==Category.namecategory){%>
+        <div class="col-md-4 mb-5">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title" id="companyname"><%=Data.company%></h2>
+              <h6 class="font-weight-bolnodejs appd" id="companycategory"><small>Category:<%=Data.category%></small></h6>
+              <p class="card-text comment more" id="companydescription"><%=Data.description%></p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary btn-sm" id="moreinfo">More Info</a>
+            </div>
+          </div>
+        </div>
+      <%}
+      if(parseInt(Category.namecategory)=="NaN"){%>
+        <div class="col-md-4 mb-5">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title" id="companyname"><%=Data.company%></h2>
+              <h6 class="font-weight-bolnodejs appd" id="companycategory"><small>Category:<%=Data.category%></small></h6>
+              <p class="card-text comment more" id="companydescription"><%=Data.description%></p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary btn-sm" id="moreinfo">More Info</a>
+            </div>
+          </div>
+        </div>
+      <%}%>
+    <%})%>  
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+  <!--Pagination-->
+  <!-- Footer -->
+    <!-- /.container -->
+<%-include("include/footer") %>
